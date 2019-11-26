@@ -214,7 +214,7 @@ functions:
           authLevel: anonymous # can also be `function` or `admin`
 ```
 
-* package.json --> smc-hello (root)
+* package.json --> smc-hello (root) - Notice the commands under "scripts"
 
 ``` json
 {
