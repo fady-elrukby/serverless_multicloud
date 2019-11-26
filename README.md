@@ -69,7 +69,7 @@ smc-hello-+
           serverless.yml
 ```
 
-Under the *src* folder is a subfolder called *handlers*. This is where the two handler files (`goodbye.js` and `hello.js`) for this project are expected by the Serverless Framework. The `serverless.yml` file is the configuration file used by the serverless framework to deploy the application. If you examine the `serverless.yml` file, you will see that it outlines 2 function end points, one for hello and the other for goodbye.
+Under the *src* folder is a subfolder called *handlers*. This is where the two handler files (`goodbye.js` and `hello.js`) for this project are expected by the Serverless Framework. The `serverless.yml` file is the configuration file used by the serverless framework to deploy the application. If you examine the `serverless.yml` file, you will see that it outlines 2 function endpoints, one for hello and the other for goodbye.
 
 ### Step 3
 
@@ -153,7 +153,7 @@ Paste the code into each the respective files:
 }
 ```
 
-* _serverless-aws.yml_
+* _serverless-aws.yml_ (root)
 
 ``` YAML
 service: smc-hello
@@ -212,7 +212,7 @@ functions:
           authLevel: anonymous # can also be `function` or `admin`
 ```
 
-* package.json --> smc-hello
+* package.json --> smc-hello (root)
 
 ``` json
 {
@@ -251,7 +251,7 @@ functions:
 }
 ```
 
-* webpack.config.js --> smc-hello
+* webpack.config.js --> smc-hello (root)
 
 ``` javascript
 const path = require('path');
@@ -270,7 +270,7 @@ module.exports = {
 };
 ```
 
-* app.js --> src
+* app.js --> /src
 
 ``` javascript
 const { App } = require("@multicloud/sls-core");
@@ -280,7 +280,7 @@ const { AwsModule } = require("@multicloud/sls-aws");
 module.exports = new App(new AzureModule(), new AwsModule());
 ```
 
-* config.js --> src
+* config.js --> /src
 
 ``` javascript
 const {
@@ -304,7 +304,7 @@ const {
   };
 ```
 
-* hello.js --> handlers
+* hello.js --> /src/handlers/
 
 ``` javascript
 const app = require("../app");
@@ -355,7 +355,7 @@ We can now test invoking the azure function locally. Enter the following in the 
     npm run start:azure
 ```
 
-After the start sequence is complete, you will will see the *hello* end point as being listened to at:
+After the start sequence is complete, you will will see the *hello* endpoint as being listened to at:
 
 ``` Shell
     Http Functions:
