@@ -147,7 +147,7 @@ Create the following 8 files at the indicate locations. They are indicated by th
 
 Paste the code into each the respective files:
 
-* _host.json_ (in the root of the project)
+* _host.json_ --> smc-hello (root)
 
 ``` json
 {
@@ -155,7 +155,7 @@ Paste the code into each the respective files:
 }
 ```
 
-* _serverless-aws.yml_ (root)
+* _serverless-aws.yml_ --> smc-hello (root)
 
 ``` YAML
 service: smc-hello
@@ -176,7 +176,7 @@ functions:
           method: get
 ```
 
-* _serverless-azure.yml_
+* _serverless-azure.yml_ --> smc-hello (root)
 
 ```YAML
 service: smc-hello
