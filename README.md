@@ -33,9 +33,8 @@ The following procedures are designed to allow you to open the sample code packa
 * Deployment to the AWS cloud platform's AWS Lambda service
 * Use a common/normalized API to communicate with both deployed applications
 
-**NOTE**: Most of the following commands are executed from the command line in a Command / Terminal Window.
 
-The approach we will take is to start with using the Serverless Framework to create an Azure Serverless project, then we will modify it so it will work with both Azure and AWS.
+**NOTE**: The approach we will take is to start with using the Serverless Framework to create an Azure Serverless project, then we will modify it so it will work with both Azure and AWS.
 
 ### Step 1
 
