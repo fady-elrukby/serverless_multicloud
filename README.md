@@ -10,7 +10,8 @@ This readme will help the reader setup a `hello` serverless function  that works
 
 1. Node.js 10.x
 2. [Serverless Framework CLI v.1.9.0+](https://serverless.com/)  
-   **NOTE**: To set up from the command line:
+   
+   You can set up from the command line:
 
 ``` Shell
     npm i -g serverless
@@ -32,11 +33,13 @@ The following procedures are designed to allow you to open the sample code packa
 * Deployment to the AWS cloud platform's AWS Lambda service
 * Use a common/normalized API to communicate with both deployed applications
 
-**NOTE**: Most of the following commands are executed from the command line in a Command Window.
+**NOTE**: Most of the following commands are executed from the command line in a Command / Terminal Window.
+
+The approach we will take is to start with using the Serverless Framework to create an Azure Serverless project, then we will modify it so it will work with both Azure and AWS.
 
 ### Step 1
 
-Start by using the Serverless Framework to create a serverless azure function based on the Azure functions template, then modify the project to support both Azure and AWS. In a command window, enter:
+Start by using the Serverless Framework to create a serverless azure function based on the Azure functions template. In a command window, enter:
 
 ``` Shell
     sls create -t azure-nodejs -p smc-hello
@@ -501,7 +504,7 @@ See any of the following materials for additional information:
 
 ## Contributions
 
-We enthusiastically welcome contributions and feedback. Please read the [contributing guide](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/contributing.md) before you begin.
+We enthusiastically welcome contributions and feedback. Please read the [contribution guidelines](https://github.com/serverless/multicloud/blob/master/CONTRIBUTING.md) before you begin.
 
 ## Code of Conduct
 
@@ -509,4 +512,4 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 
 ## License
 
-Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License (the "[License](https://github.com/microsoft/Cognitive-LUIS-Node.js/blob/master/LICENSE.md)").
+Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License (the "[License](https://github.com/serverless/multicloud/blob/master/LICENSE.txt)").
