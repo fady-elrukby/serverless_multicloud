@@ -18,7 +18,7 @@ This readme will help the reader setup a `hello` serverless function  that works
 
 3. Set up provider credentials:
 
-    a. For [AWS](https://github.com/serverless/serverless/blob/HEAD/docs/providers/aws/guide/credentials.md)  
+    a. For [AWS](https://github.com/serverless/serverless/blob/HEAD/docs/providers/aws/guide/credentials.md), or [watch video](https://www.youtube.com/watch?v=HSd9uYj2LJA)  
     b. For [Azure](https://serverless.com/framework/docs/providers/azure/guide/credentials/)
 
 ## Setup
