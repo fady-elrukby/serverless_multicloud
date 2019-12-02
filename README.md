@@ -10,7 +10,8 @@ This readme will help the reader setup a `hello` serverless function  that works
 
 1. Node.js 10.x
 2. [Serverless Framework CLI v.1.9.0+](https://serverless.com/)  
-   **NOTE**: To set up from the command line:
+   
+   You can set up from the command line:
 
 ``` Shell
     npm i -g serverless
@@ -18,7 +19,7 @@ This readme will help the reader setup a `hello` serverless function  that works
 
 3. Set up provider credentials:
 
-    a. For [AWS](https://github.com/serverless/serverless/blob/HEAD/docs/providers/aws/guide/credentials.md)  
+    a. For [AWS](https://github.com/serverless/serverless/blob/HEAD/docs/providers/aws/guide/credentials.md), or [watch video](https://www.youtube.com/watch?v=HSd9uYj2LJA)  
     b. For [Azure](https://serverless.com/framework/docs/providers/azure/guide/credentials/)
 
 ## Setup
@@ -32,11 +33,12 @@ The following procedures are designed to allow you to open the sample code packa
 * Deployment to the AWS cloud platform's AWS Lambda service
 * Use a common/normalized API to communicate with both deployed applications
 
-**NOTE**: Most of the following commands are executed from the command line in a Command Window.
+
+**NOTE**: The approach we will take is to start with using the Serverless Framework to create an Azure Serverless project, then we will modify it so it will work with both Azure and AWS.
 
 ### Step 1
 
-Start by using the Serverless Framework to create a serverless azure function based on the Azure functions template, then modify the project to support both Azure and AWS. In a command window, enter:
+Start by using the Serverless Framework to create a serverless azure function based on the Azure functions template. In a command window, enter:
 
 ``` Shell
     sls create -t azure-nodejs -p smc-hello
@@ -69,7 +71,7 @@ smc-hello-+
           serverless.yml
 ```
 
-Under the *src* folder is a subfolder called *handlers*. This is where the two handler files (`goodbye.js` and `hello.js`) for this project are expected by the Serverless Framework. The `serverless.yml` file is the configuration file used by the serverless framework to deploy the application. If you examine the `serverless.yml` file, you will see that it outlines 2 function end points, one for hello and the other for goodbye.
+Under the *src* folder is a subfolder called *handlers*. This is where the two handler files (`goodbye.js` and `hello.js`) for this project are expected by the Serverless Framework. The `serverless.yml` file is the configuration file used by the serverless framework to deploy the application. If you examine the `serverless.yml` file, you will see that it outlines 2 function endpoints, one for hello and the other for goodbye.
 
 ### Step 3
 
@@ -145,7 +147,7 @@ Create the following 8 files at the indicate locations. They are indicated by th
 
 Paste the code into each the respective files:
 
-* _host.json_ (in the root of the project)
+* _host.json_ --> smc-hello (root)
 
 ``` json
 {
@@ -153,7 +155,7 @@ Paste the code into each the respective files:
 }
 ```
 
-* _serverless-aws.yml_
+* _serverless-aws.yml_ --> smc-hello (root)
 
 ``` YAML
 service: smc-hello
@@ -174,7 +176,7 @@ functions:
           method: get
 ```
 
-* _serverless-azure.yml_
+* _serverless-azure.yml_ --> smc-hello (root)
 
 ```YAML
 service: smc-hello
@@ -212,7 +214,7 @@ functions:
           authLevel: anonymous # can also be `function` or `admin`
 ```
 
-* package.json --> smc-hello
+* package.json --> smc-hello (root) - Notice the commands under "scripts"
 
 ``` json
 {
@@ -251,7 +253,7 @@ functions:
 }
 ```
 
-* webpack.config.js --> smc-hello
+* webpack.config.js --> smc-hello (root)
 
 ``` javascript
 const path = require('path');
@@ -270,7 +272,7 @@ module.exports = {
 };
 ```
 
-* app.js --> src
+* app.js --> /src
 
 ``` javascript
 const { App } = require("@multicloud/sls-core");
@@ -280,7 +282,7 @@ const { AwsModule } = require("@multicloud/sls-aws");
 module.exports = new App(new AzureModule(), new AwsModule());
 ```
 
-* config.js --> src
+* config.js --> /src
 
 ``` javascript
 const {
@@ -304,7 +306,7 @@ const {
   };
 ```
 
-* hello.js --> handlers
+* hello.js --> /src/handlers/
 
 ``` javascript
 const app = require("../app");
@@ -355,7 +357,7 @@ We can now test invoking the azure function locally. Enter the following in the 
     npm run start:azure
 ```
 
-After the start sequence is complete, you will will see the *hello* end point as being listened to at:
+After the start sequence is complete, you will will see the *hello* endpoint as being listened to at:
 
 ``` Shell
     Http Functions:
@@ -434,13 +436,13 @@ When the deployment is done, a message like the following is returned:
 Deployed serverless functions:
 
 ``` Shell
-    -> Hello: sls-wus2-dev-smc-hello.azurewebsites.net/api/hello
+    -> sls-wus2-dev-smc-hello.azurewebsites.net/api/hello
 ```
 
 This is the endpoint for the hello handler function on Azure. You can use your API client tool to send the following GET request:
 
 ``` Shell
-    sls-wus2-dev-smc-hello.azurewebsites.net/api/hello?name=Tina
+    https://sls-wus2-dev-smc-hello.azurewebsites.net/api/hello?name=Tina
 ```
 
 Which should get the response:
@@ -461,7 +463,7 @@ When the deployment is done, a message like the following is returned:
 
 ``` Shell
     endpoints:
-      GET - https://25usdrthf8.execute-api.us-east-1.amazonaws.comdev/hello
+      GET - https://25usdrthf8.execute-api.us-east-1.amazonaws.com/dev/hello
     functions:
       hello: smc-hello-dev-hello
 ```
@@ -469,7 +471,7 @@ When the deployment is done, a message like the following is returned:
 Use you API client tool to send the following GET request:
 
 ``` Shell
-    https://25usdrthf8.execute-api.us-east-1.amazonaws.comdev/hello?name=Robert
+    https://25usdrthf8.execute-api.us-east-1.amazonaws.com/dev/hello?name=Robert
 ```
 
 Which should get the response:
@@ -498,7 +500,7 @@ See any of the following materials for additional information:
 
 ## Contributions
 
-We enthusiastically welcome contributions and feedback. Please read the [contributing guide](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/contributing.md) before you begin.
+We enthusiastically welcome contributions and feedback. Please read the [contribution guidelines](https://github.com/serverless/multicloud/blob/master/CONTRIBUTING.md) before you begin.
 
 ## Code of Conduct
 
@@ -506,4 +508,4 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 
 ## License
 
-Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License (the "[License](https://github.com/microsoft/Cognitive-LUIS-Node.js/blob/master/LICENSE.md)").
+Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License (the "[License](https://github.com/serverless/multicloud/blob/master/LICENSE.txt)").
